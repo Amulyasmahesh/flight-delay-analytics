@@ -2,6 +2,10 @@
 
 End-to-end analysis of **5.7 million US domestic flights (2015)**: exploratory analysis, SQL analytics, a delay-prediction model, and an interactive Streamlit app that returns a delay-risk score for any airline, route, and departure time.
 
+### 🔗 [View the live Tableau dashboard](https://public.tableau.com/app/profile/amulya.m4207/viz/USFlightDelayAnalytics2015/Dashboard1)
+
+![Flight delay dashboard](images/dashboard.png)
+
 ## Business Question
 
 > When, where, and with which airline are flights most likely to be delayed, and how well can delay risk be predicted using only information known **before** departure?
@@ -25,7 +29,8 @@ A flight is labelled **delayed** if it arrives more than **15 minutes** late (th
 2. **EDA (pandas, matplotlib):** delay rates by month, weekday, airline, airport, and hour of day.
 3. **SQL analytics (SQLite):** ranking and trend analysis using CTEs and window functions (`RANK()`, `LAG()`), including monthly deviation from the yearly average.
 4. **Modeling:** Random Forest baseline vs. XGBoost, using only pre-departure features to avoid data leakage.
-5. **App:** Streamlit interface that loads the trained model and predicts delay probability from user inputs.
+5. **Dashboard (Tableau Public):** exported small summary tables from the SQL/pandas layer and built an interactive dashboard: KPI cards, delay rate by departure hour, month × weekday heatmap, airline ranking, and a map of origin airports sized by flight volume and coloured by delay rate.
+6. **App:** Streamlit interface that loads the trained model and predicts delay probability from user inputs.
 
 ## Model Results
 
@@ -42,7 +47,7 @@ Top predictors (XGBoost): scheduled departure time (34%), airline (16.5%), month
 
 ## Tech Stack
 
-Python · pandas · NumPy · scikit-learn · XGBoost · SQLite · matplotlib · Streamlit · joblib · Git
+Python · pandas · NumPy · scikit-learn · XGBoost · SQLite · matplotlib · Tableau Public · Streamlit · joblib · Git
 
 ## Project Structure
 
@@ -55,6 +60,8 @@ flight-delay-analytics/
 ├── src/
 │   ├── xgb_model.pkl           # Trained XGBoost model
 │   └── label_encoders.pkl      # Fitted encoders for airline/airport codes
+├── images/
+│   └── dashboard.png           # Dashboard screenshot used in this README
 ├── data/                       # Not tracked in git (see below)
 │   ├── raw/
 │   └── processed/
